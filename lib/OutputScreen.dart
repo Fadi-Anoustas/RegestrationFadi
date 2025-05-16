@@ -1,29 +1,21 @@
 import 'package:flutter/material.dart';
 
 class OutputScreen extends StatelessWidget {
-  final String? username;
-  final String? password;
-  final String? email;
-  final bool? rememberMe;
-  final String? gender;
-  final String? country;
-  final double? age;
-  final DateTime? selectedDate;
-
-  const OutputScreen({
-    super.key,
-    this.username,
-    this.password,
-    this.email,
-    this.rememberMe,
-    this.gender,
-    this.country,
-    this.age,
-    this.selectedDate,
-  });
+  const OutputScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    
+    final String? username = args['username'];
+    final String? password = args['password'];
+    final String? email = args['email'];
+    final bool? rememberMe = args['rememberMe'];
+    final String? gender = args['gender'];
+    final String? country = args['country'];
+    final double? age = args['age'];
+    final DateTime? selectedDate = args['selectedDate'];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Form Output'),
@@ -44,7 +36,7 @@ class OutputScreen extends StatelessWidget {
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context); // Go back to the form screen
+                Navigator.pop(context);
               },
               child: const Text('Go Back'),
             ),
